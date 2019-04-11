@@ -1,0 +1,21 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: microservice-gateway-zuul
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://127.0.0.1:1111/eureka/,http://127.0.0.1:1112/eureka/,http://127.0.0.1:1113/eureka/
+      defaultZone: http://127.0.0.1:1111/eureka/
+      instance:
+        ip-address: true
+zuul:
+  ignoredServices: '*'
+  routes:
+    template-service: /test/**
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000

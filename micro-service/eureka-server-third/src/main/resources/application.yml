@@ -1,0 +1,19 @@
+server:
+  port: 8773
+spring:
+  profiles: peer3
+  application:
+    name: registry-server
+eureka:
+  instance:
+    hostname: peer3
+    lease-expiration-duration-in-seconds: 15 # 剔除注册记录的最大容忍失联时间
+    lease-renewal-interval-in-seconds: 5  # 注册中心主动心跳的时间间隔
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/,http://localhost:1112/eureka/
+  server:
+    response-cache-update-interval-ms: 3000 # 从注册可用到真正可用的时间
+    response-cache-auto-expiration-in-seconds: 180 # 注册方注册保障的有效时间或者失效时间
+    eviction-interval-timer-in-ms: 3000 # 注册中心主动监测失效的时间间隔
+#    enable-self-preservation: false # 关闭自我保护
